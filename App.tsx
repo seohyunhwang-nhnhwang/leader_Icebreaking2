@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { AppState, Card } from './types';
 import { REFLECTION_CARDS } from './constants';
