@@ -1,5 +1,4 @@
-
-import { Card } from './types';
+import { Card } from './types.ts';
 
 export const REFLECTION_CARDS: Card[] = [
   { id: 1, title: "MZ", text: "솔직히... 이해하기 어려울 때가 있다 vs 나름 적응했다", emoji: "🤝" },
