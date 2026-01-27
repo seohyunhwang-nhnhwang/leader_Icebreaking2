@@ -1,4 +1,6 @@
-
 {
-  "outputDirectory": "."
+  "version": 2,
+  "outputDirectory": ".",
+  "buildCommand": "npm run build",
+  "framework": null
 }

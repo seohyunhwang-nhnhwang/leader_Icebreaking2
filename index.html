@@ -4,11 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>리더의 마음 카드</title>
-    <!-- 프리뷰 환경의 실시간 렌더링을 위해 Tailwind CDN 사용 -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 프로덕션 빌드 환경에서 생성될 CSS 참조 -->
+    <link rel="stylesheet" href="./style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+      /**
+       * Vercel 프로덕션 환경의 'No CDN' 정책을 준수하면서도
+       * 개발용 프리뷰 환경에서 디자인을 확인할 수 있게 하는 동적 로더입니다.
+       */
+      (function() {
+        const isLocalPreview = window.location.hostname === 'localhost' || 
+                              window.location.hostname === '127.0.0.1' || 
+                              window.location.hostname.includes('webcontainer') ||
+                              window.location.hostname.includes('stackblitz');
+        
+        // 프리뷰 환경에서만 Tailwind CDN을 주입합니다.
+        // 프로덕션(Vercel 배포 시)에서는 이 코드가 실행되더라도 빌드된 style.css가 우선권을 가집니다.
+        if (isLocalPreview) {
+          const script = document.createElement('script');
+          script.src = "https://cdn.tailwindcss.com";
+          document.head.appendChild(script);
+        }
+      })();
+    </script>
+    
     <style>
       body {
         font-family: 'Pretendard', sans-serif;
@@ -21,16 +45,17 @@
         50% { transform: translateY(-10px); }
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
-  }
-}
-</script>
-</head>
+    
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+      }
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
   </body>
